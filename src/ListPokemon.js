@@ -46,7 +46,7 @@ export class ListPokemon extends LitElement {
   async firstUpdated(){
     const pokemonDm = this.shadowRoot.querySelector('pokemon-dm');
     await pokemonDm.makeRequest();
-    this.pokemones = pokemonDm.data;
+    this.pokemones = pokemonDm.pokemonData;
     this.requestUpdate();
     
   }
