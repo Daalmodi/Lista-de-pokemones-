@@ -3,7 +3,7 @@ import { getComponentSharedStyles } from '@bbva-web-components/bbva-core-lit-hel
 import '@bbva-web-components/bbva-web-panel-outstanding-opportunity/bbva-web-panel-outstanding-opportunity.js';
 import'@bbva-web-components/bbva-core-image/bbva-core-image.js';
 import '@bbva-web-components/bbva-foundations-grid-default-layout';
-
+import '@pokemondex/pokemon-dm/pokemon-dm.js';
 import '@bbva-web-components/bbva-web-button-default/bbva-web-button-default.js';
 
 import styles from './list-pokemon.css.js';
@@ -23,23 +23,13 @@ export class ListPokemon extends LitElement {
   static get properties() {
     return {
 
-      
-      /**
-       * Description for property
-       */
-      name: {
-        type: String,
-      },
     };
   }
 
   constructor() {
     super();
     this.pokemones = [];
-    this.type = [];
-    this.id = {};
-    this.selectedId = null;
-    this.makeRequest();
+    
 
   }
 
@@ -53,28 +43,15 @@ export class ListPokemon extends LitElement {
     ];
   }
 
-
-
-  makeRequest() {
-
-    const promises = [];
-
-    for (let index = 1; index <= 30; index++) {
-      promises.push(
-        fetch(`https://pokeapi.co/api/v2/pokemon/${index}`)
-          .then((response) => response.json())
-          .catch((error) => console.error('Error:', error))
-      );
-    }
-
-    Promise.all(promises).then((data) => this.renderPokemons(data));
+  async firstUpdated(){
+    const pokemonDm = this.shadowRoot.querySelector('pokemon-dm');
+    await pokemonDm.makeRequest();
+    this.pokemones = pokemonDm.data;
+    this.requestUpdate();
+    
   }
-  renderPokemons(pokemon) {
-    this.pokemones = pokemon.sort((a, b) => a.id - b.id); 
-    this.requestUpdate(); // Solicita una actualización de la interfaz
 
 
-  }
 
   render() {
     return html`
@@ -123,7 +100,7 @@ export class ListPokemon extends LitElement {
     </div>
     </bbva-foundations-grid-default-layout>
 
-      
+      <pokemon-dm></pokemon-dm> 
       
     `;
   }

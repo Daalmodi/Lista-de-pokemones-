@@ -32,6 +32,7 @@
     "@bbva-web-components/bbva-dev-demo-theme": "^2.0.0",
     "@bbva-web-components/bbva-foundations-sass": "^1.0.0",
     "@bbva-web-components/bbva-web-panel-outstanding-opportunity": "^1.0.0",
+    "@pokemondex/pokemon-dm":"git+https://github.com/Daalmodi/pokemon-dm.git#c3dfa8d88586b75f2360d354770ea637debb7fc7",
     "@open-wc/testing": "^3.0.0"
   },
   "customElements": "custom-elements.json"
