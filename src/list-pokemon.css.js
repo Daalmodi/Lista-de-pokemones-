@@ -33,4 +33,8 @@ export default css`
   display: grid;
   justify-content: center;
 }
+
+.tipos {
+  font-size: 15px;
+}
 `;

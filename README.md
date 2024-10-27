@@ -52,7 +52,7 @@ import '@bbva-web-components/list-pokemon/list-pokemon.js';
 
 ![LitElement component](https://img.shields.io/badge/litElement-component-blue.svg)
 
-This component ...
+Este es un componente UI el cual enlista pokemones deonde se puede ilustrar el nombre, su imagen , el tipo y su id, asi como tambien un voto que redirige a la pagina de  la cadena de evoluciones.
 
 Example:
 

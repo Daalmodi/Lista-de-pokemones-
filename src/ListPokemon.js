@@ -1,4 +1,5 @@
 import { LitElement, html } from 'lit-element';
+import { CellsPageMixin as cellsPage } from '@cells/cells-page-mixin';
 import { getComponentSharedStyles } from '@bbva-web-components/bbva-core-lit-helpers';
 import '@bbva-web-components/bbva-web-panel-outstanding-opportunity/bbva-web-panel-outstanding-opportunity.js';
 import'@bbva-web-components/bbva-core-image/bbva-core-image.js';
@@ -8,18 +9,8 @@ import '@bbva-web-components/bbva-web-button-default/bbva-web-button-default.js'
 
 import styles from './list-pokemon.css.js';
 
-/**
- * ![LitElement component](https://img.shields.io/badge/litElement-component-blue.svg)
- *
- * This component ...
- *
- * Example:
- *
- * ```html
- *   <list-pokemon></list-pokemon>
- * ```
- */
-export class ListPokemon extends LitElement {
+
+export class ListPokemon extends cellsPage(LitElement) {
   static get properties() {
     return {
 
@@ -29,8 +20,6 @@ export class ListPokemon extends LitElement {
   constructor() {
     super();
     this.pokemones = [];
-    
-
   }
 
   static get styles() {
@@ -48,7 +37,6 @@ export class ListPokemon extends LitElement {
     await pokemonDm.makeRequest();
     this.pokemones = pokemonDm.pokemonData;
     this.requestUpdate();
-    
   }
 
 
@@ -74,15 +62,13 @@ export class ListPokemon extends LitElement {
           
         >
           <bbva-core-image style="width:400px; height:400px; " sizing="cover; object-fit: contain" preload fade src=${pokemon.sprites.other.dream_world.front_default}></bbva-core-image>
-          <div>
+          <div class="tipos">
             Tipos : ${pokemon.types.map((type) => html` ${type.type.name} `)}
           </div>
           <div>
              id : ${pokemon.id}
           </div>
-          
-                 
-
+    
         </bbva-web-panel-outstanding-opportunity-item>
         
           <bbva-web-button-default
@@ -106,10 +92,14 @@ export class ListPokemon extends LitElement {
   }
 
   handleButtonClick(id) {
+  // En este metodo se redirige a la pagina de evoluciones con el metodo navigate 
   alert("Redirige a la pagina de evoluciones del pokemon con el id : "+ id);
-    // this.navigate('evolution', { id }); //navega con un parametro id 
+  this.navigate('evolution',{id}); //navega con un parametro id 
+  this.onPageLeave(id);
+  }
 
-
+  onPageLeave(id){
+    this.publish('canal_1', id);
   }
 
 }
