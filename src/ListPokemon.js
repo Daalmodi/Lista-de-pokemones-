@@ -93,7 +93,6 @@ export class ListPokemon extends cellsPage(LitElement) {
 
   handleButtonClick(id) {
   // En este metodo se redirige a la pagina de evoluciones con el metodo navigate 
-  alert("Redirige a la pagina de evoluciones del pokemon con el id : "+ id);
   this.navigate('evolution',{id}); //navega con un parametro id 
   this.onPageLeave(id);
   }

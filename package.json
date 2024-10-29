@@ -33,7 +33,7 @@
     "@bbva-web-components/bbva-dev-demo-theme": "^2.0.0",
     "@bbva-web-components/bbva-foundations-sass": "^1.0.0",
     "@bbva-web-components/bbva-web-panel-outstanding-opportunity": "^1.0.0",
-    "@pokemondex/pokemon-dm":"git+https://github.com/Daalmodi/pokemon-dm.git#0c9b6110a8b87984279d69b4168190fadcb3ea7f",
+    "@pokemondex/pokemon-dm":"git+https://github.com/Daalmodi/pokemon-dm.git#626a12c1e57253bc1c11b1eedfef2c77f278bd60",
     "@open-wc/testing": "^3.0.0"
   },
   "customElements": "custom-elements.json"
